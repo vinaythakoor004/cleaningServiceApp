@@ -110,7 +110,7 @@ export class HomeComponent implements OnInit {
   }
 
   identify(index: any, item: any) {
-    return item.bookingId;
+    return item.id;
   }
 
   openDetailsDialog(item: bookingData): void {
@@ -135,9 +135,9 @@ export class HomeComponent implements OnInit {
   deleteBooking(item: bookingData): void {
     this.homeService.deleteBooking(item.id).subscribe({
       next: (data: any) => {
-        this.currentPage = this.bookingData.length == 1 && this.bookingData[0].bookingId == item.bookingId && this.currentPage != 1 ? this.currentPage - 1 : this.currentPage;
+        this.currentPage = this.bookingData.length == 1 && this.bookingData[0].id == item.id && this.currentPage != 1 ? this.currentPage - 1 : this.currentPage;
         this.getServiceData(this.currentPage);
-        this.alertService.openSnackBar('Row: ' + item.bookingId + ' deleted successfully');
+        this.alertService.openSnackBar('Row: ' + item.id + ' deleted successfully');
       },
       error: (err: any) => {
         this.alertService.openSnackBar('Delete booking failed!');

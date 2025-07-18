@@ -52,8 +52,8 @@ public class BookingController {
     }
 
     @DeleteMapping("/bookings/{id}")
-    public ResponseEntity<Void> deleteBooking(@PathVariable Long id) {
-        bookingService.deleteBooking(id);
+    public ResponseEntity<Void> deleteBooking(@PathVariable("id") Long Id) {
+        bookingService.deleteBooking(Id);
         return ResponseEntity.noContent().build(); // HTTP 204
     }
 }

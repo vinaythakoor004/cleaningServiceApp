@@ -30,7 +30,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let item of bookingData; let i = index; trackBy: identify">
-          <th class="text-center" scope="row"><span (click)="openDetailsDialog(item)" class="idClass">{{item.bookingId}}</span></th>
+          <th class="text-center" scope="row"><span (click)="openDetailsDialog(item)" class="idClass">{{item.id}}</span></th>
           <td>{{item.firstName}}&nbsp;{{item.lastName}}</td>
           <td>{{item.bookingDetails.serviceName}}</td>
           <td>{{item.bookingDetails.time}}</td>

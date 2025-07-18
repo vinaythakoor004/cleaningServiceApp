@@ -156,7 +156,7 @@ export class BookAppointmentComponent {
   onSubmit(): void {
     if (this.appointmentForm.valid) {
       const appointmentData: bookingData = {
-        bookingId: this.homeService.isEdit ? this.homeService.editItem.id : undefined,
+        id: this.homeService.isEdit ? this.homeService.editItem.id : undefined,
         firstName: this.appointmentForm.value.firstName,
         lastName: this.appointmentForm.value.lastName,
         email: this.appointmentForm.value.email,
