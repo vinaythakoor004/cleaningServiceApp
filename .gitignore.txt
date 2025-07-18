@@ -1,0 +1,14 @@
+# Angular
+cleaning-frontend/node_modules/
+cleaning-frontend/dist/
+cleaning-frontend/.angular/
+
+# Java (Spring Boot)
+cleaning-backend/target/
+
+# OS & IDE
+**/.DS_Store
+**/.idea/
+**/.classpath
+**/.project
+**/.settings/
