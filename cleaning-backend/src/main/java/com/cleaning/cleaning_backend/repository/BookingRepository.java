@@ -1,6 +1,6 @@
-package com.cleaning.app.repository;
+package com.cleaning.cleaning_backend.repository;
 
-import com.cleaning.app.entity.Booking;
+import com.cleaning.cleaning_backend.entity.Booking;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

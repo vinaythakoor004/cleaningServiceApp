@@ -1,4 +1,4 @@
-package com.cleaning.app.entity;
+package com.cleaning.cleaning_backend.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

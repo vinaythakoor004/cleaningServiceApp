@@ -1,15 +1,14 @@
-package com.cleaning.app.service;
+package com.cleaning.cleaning_backend.service;
 
-import com.cleaning.app.dto.BookingListResponse;
-import com.cleaning.app.entity.Booking;
-import com.cleaning.app.repository.BookingRepository;
+import com.cleaning.cleaning_backend.dto.BookingListResponse;
+import com.cleaning.cleaning_backend.entity.Booking;
+import com.cleaning.cleaning_backend.repository.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import java.util.List;
 import java.util.Optional;
 
 @Service

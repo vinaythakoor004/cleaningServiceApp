@@ -1,0 +1,34 @@
+# Angular
+cleaning-frontend/node_modules/
+cleaning-frontend/dist/
+cleaning-frontend/.angular/
+cleaning-frontend/.env
+
+# Java (Spring Boot)
+cleaning-backend/target/
+cleaning-backend/.env
+
+# IDEs & OS
+*.iml
+*.ipr
+*.iws
+*.swp
+*~
+*.bak
+*.tmp
+*.log
+
+# Eclipse
+**/.classpath
+**/.project
+**/.settings/
+**/.metadata/
+
+# IntelliJ
+**/.idea/
+
+# macOS
+**/.DS_Store
+
+# VS Code
+.vscode/
