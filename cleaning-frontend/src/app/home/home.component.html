@@ -55,10 +55,10 @@
 
 
   <nav *ngIf="pageSize.length" aria-label="Page navigation" class="paginationClass">
-    <select class="form-select-sm pageSizeSelect" aria-label="Default select example">
-      <option selected value="1">5</option>
-      <option value="2">10</option>
-      <option value="3">20</option>
+    <select class="form-select-sm pageSizeSelect" aria-label="Default select example" [(ngModel)]="selectedOption" (ngModelChange)="changePageSize($event)">
+      <option *ngFor="let option of options" [value]="option.value">
+        {{ option.viewValue }}
+      </option>
     </select>
 
     <ul class="pagination">

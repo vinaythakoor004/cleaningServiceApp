@@ -14,9 +14,10 @@ import { BubbleChartComponent } from './bubble-chart/bubble-chart.component';
 // import { ScrollingModule } from '@angular/cdk/scrolling';
 import { WebsocketService } from './service/websocket.service';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, SearchComponent, MatButtonModule, BubbleChartComponent, MatProgressSpinnerModule ], //ScrollingModule ],
+  imports: [CommonModule, FormsModule, SearchComponent, MatButtonModule, BubbleChartComponent, MatProgressSpinnerModule ], //ScrollingModule ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -34,28 +35,32 @@ export class HomeComponent implements OnInit {
   loggedInUser: any = {};
   public isLoading: boolean = true;
   public errorMessage: string | null = null;
+  selectedOption: number = 10;
+  options = [
+    { value: 10, viewValue: '10' },
+    { value: 20, viewValue: '20' },
+    { value: 30, viewValue: '30' }
+  ];
+
   constructor(private homeService: HomeService, private popupService: PopupService,
     private alertService: AlertService,
     private ws: WebsocketService,
     private commonService: CommonService) { }
 
   ngOnInit(): void {
-    this.getServiceData(1);
+    this.getServiceData(1, this.selectedOption);
     this.loggedInUser = this.commonService.loggedInUser;
-    this.subscriptions.push(this.ws.listenToBooking().subscribe(booking => {
-    alert('📢 New booking received:\n' + JSON.stringify(booking));
-    // or push to a bookings array if you're displaying a list
-  }));
+    this.ws.connect();
   }
 
   ngOnDestroy(): void {
     this.subscriptions?.forEach(item => item.unsubscribe());
   }
 
-  getServiceData(currentPage: number, searchTxt?: string): void {
+  getServiceData(currentPage: number, pageSize: number, searchTxt?: string): void {
     this.isLoading = true;
     this.errorMessage = null;
-    this.homeService.getServiceData(currentPage, 10, searchTxt || "").subscribe({
+    this.homeService.getServiceData(currentPage, pageSize, searchTxt || "").subscribe({
       next: (data: any) => {
         if (data?.bookings) {
           this.isLoading = false;
@@ -80,9 +85,12 @@ export class HomeComponent implements OnInit {
     )
   }
 
+  changePageSize(event: any) {
+    this.getServiceData(1, this.selectedOption);
+  }
+
   getPageSize(total: number): Array<number> {
-    // let limit = Math.ceil(this.allBookingData.length / 10);
-    let limit = Math.ceil(total / 10);
+    let limit = Math.ceil(total / this.selectedOption);
     return this.pageSize = [...Array(limit)].map((a, i) => i + 1)
   }
 
@@ -135,7 +143,7 @@ export class HomeComponent implements OnInit {
     this.homeService.deleteBooking(item.id).subscribe({
       next: (data: any) => {
         this.currentPage = this.bookingData.length == 1 && this.bookingData[0].id == item.id && this.currentPage != 1 ? this.currentPage - 1 : this.currentPage;
-        this.getServiceData(this.currentPage);
+        this.getServiceData(this.currentPage, this.selectedOption);
         this.alertService.openSnackBar('Row: ' + item.id + ' deleted successfully');
       },
       error: (err: any) => {

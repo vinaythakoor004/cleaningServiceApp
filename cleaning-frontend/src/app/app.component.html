@@ -15,7 +15,7 @@
             (click)="navigatePage($event, 'ex')">ex</a> -->
 
         <a ></a>
-            <button #about class="nav-link" [routerLinkActive]="['activeClass']" popovertarget="mydiv"><img class="img-responsive aboutImg" src="assets/img/account_circle.svg" popovertarget="mydiv"></button>
+      <button class="nav-link" [matBadge]="notifications.length || 0" matBadgeColor="warn"  [routerLinkActive]="['activeClass']" popovertarget="mydiv"><mat-icon class="img-responsive aboutImg" popovertarget="mydiv">account_circle</mat-icon></button>
         <a #about *ngIf="!isLoggedIn()" class="nav-link" routerLink="login" [routerLinkActive]="['activeClass']"
             (click)="navigatePage($event, 'login')">Log In</a>
     </header>
@@ -66,4 +66,17 @@
         <button class="closeBtn" popovertarget="mydiv" popovertargetaction="hide"><img class="img-responsive mt-2 logoutBtn" title="Logout" src="assets/img/logout.svg" (click)="logoutUser()">
         </button><br/>
     </div>
+     <hr />
+
+  <div class="notifications-section">
+    <div class="notification-title">Booking Notifications</div>
+
+    <div *ngIf="notifications.length === 0" class="no-notifications">
+      No new bookings
+    </div>
+
+    <div *ngFor="let note of notifications; let i = index" class="notification-item">
+      <span class="truncate-text" [title]="note">{{ note }}</span><button class="closeBtn" (click)="removeNotification(i)"><img class="closeMsg" src="assets/img/close.svg"></button>
+    </div>
+  </div>
   </div>

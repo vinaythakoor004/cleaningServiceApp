@@ -1,21 +1,48 @@
-import { Injectable } from '@angular/core';
-import { io, Socket } from 'socket.io-client';
-import { Observable } from 'rxjs';
+import { isPlatformBrowser } from '@angular/common';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { Client, IMessage, StompSubscription } from '@stomp/stompjs';
+import { Observable, Subject } from 'rxjs';
+import SockJS from 'sockjs-client';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WebsocketService {
 
-  constructor() { }
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+      if (isPlatformBrowser(this.platformId)) {
+        this.stompClient = new Client({
+          webSocketFactory: () => new SockJS('/api/ws-booking'),
+          reconnectDelay: 5000,
+          // debug: (msg) => console.log(msg),
+        });
 
-  private socket: Socket = io({ 'path': '/socket.io', transports: ['websocket'], withCredentials: true }); // adjust URL if needed
+        this.stompClient.onConnect = (frame) => {
+          // console.log('Connected: ', frame);
 
-  listenToBooking(): Observable<any> {
-    return new Observable(observer => {
-      this.socket.on('new-booking', data => {
-        observer.next(data);
-      });
-    });
+        this.stompClient.subscribe('/topic/booking', (message) => {
+            const body = message.body;
+            console.log('📢 Booking notification:', body);
+            this.bookingSubject.next(body);
+          });
+        };
+
+        this.stompClient.activate();
+      }
+  }
+
+private stompClient!: Client;
+private bookingSubject = new Subject<string>();
+
+onMessage(): Observable<string> {
+  return this.bookingSubject.asObservable();
+}
+
+connect() {
+
+  }
+
+  disconnect() {
+    this.stompClient.deactivate();
   }
 }

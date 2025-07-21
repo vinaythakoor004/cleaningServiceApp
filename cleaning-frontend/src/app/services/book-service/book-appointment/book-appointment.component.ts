@@ -84,7 +84,7 @@ export class BookAppointmentComponent {
   ngOnInit(): void {
     if (this.homeService.isEdit) {
       if (!this.bookService.serviceDetails.length) {
-        this.homeService.getServiceData(1, 10, "").subscribe({
+        this.bookService.getServiceDetails().subscribe({
           next: (data) => {
             if (!this.allBookingData.length) {
               this.allBookingData = this.homeService.allBookingDataCopy;
