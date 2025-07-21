@@ -50,10 +50,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.getServiceData(1, this.selectedOption);
     this.loggedInUser = this.commonService.loggedInUser;
-    this.subscriptions.push(this.ws.listenToBooking().subscribe(booking => {
-    alert('📢 New booking received:\n' + JSON.stringify(booking));
-    // or push to a bookings array if you're displaying a list
-  }));
+    this.ws.connect();
   }
 
   ngOnDestroy(): void {

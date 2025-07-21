@@ -5,8 +5,8 @@
       "changeOrigin": true,
       "logLevel": "debug"
     },
-    "/socket.io": {
-      "target": "http://backend:3001",
+    "/ws-booking": {
+      "target": "http://backend:8086",
       "ws": true,
       "secure": false,
       "logLevel": "debug"
