@@ -5,7 +5,9 @@
 }
 
 .tableDiv {
-    height: 30rem;
+    height: 31rem;
+    max-height: 31rem;
+    overflow-y: auto;
 }
 
 .paginationClass li a {

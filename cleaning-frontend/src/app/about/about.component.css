@@ -1,6 +1,6 @@
 .aboutDiv {
     margin-top: 3.92rem;
-    margin-bottom: 16rem;
+    /* margin-bottom: 16rem; */
 }
 .aboutTab {
     padding: 2rem 2.5rem;
@@ -15,7 +15,7 @@
     justify-content: space-evenly;
     padding: 0rem 10rem;
     margin-top: 6rem;
-    margin-bottom: 4rem;
+    /* margin-bottom: 4rem; */
 }
 
 .widthFix {
@@ -41,5 +41,5 @@
 
 .aboutText {
     padding:  0rem 10rem 0rem 0rem;
-    margin: auto;   
+    margin: auto;
 }
