@@ -9,8 +9,8 @@ A full-stack web application for scheduling and managing cleaning services. Buil
 🧑‍💼 Admin-ready structure with service layers, DTOs, and clean architecture
 
 🛠️ Tech Stack
-Frontend: Angular 16+ with Tailwind CSS
-Backend: Spring Boot (Java 17+)
+Frontend: Angular 19, HTML, CSS, JavaScript(ES6), Typescript, RXJS, rest API, Bootstrap 5, Angular material
+Backend: Spring Boot (Java 17+), JPA
 Database: PostgreSQL or MongoDB
 Tools: Docker, Git, REST APIs
 
