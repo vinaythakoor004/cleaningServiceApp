@@ -15,15 +15,20 @@ import java.util.Optional;
 public class BookingService {
 
 	private final BookingRepository bookingRepository;
-
+	private BookingNotificationService notificationService;
+	
 	@Autowired
-	public BookingService(BookingRepository bookingRepository) {
+	public BookingService(BookingRepository bookingRepository,
+		BookingNotificationService notificationService ) {
 		this.bookingRepository = bookingRepository;
+        this.notificationService = notificationService;
 	}
 
 	// Save a single booking
 	public Booking saveBooking(Booking booking) {
-		return bookingRepository.save(booking);
+        Booking saved = bookingRepository.save(booking);
+        notificationService.notifyNewBooking(saved);
+		return saved;
 	}
 
 	// Get all bookings
@@ -54,8 +59,10 @@ public class BookingService {
 			existingBooking.setMessage(updatedBooking.getMessage());
 			existingBooking.setCountry(updatedBooking.getCountry());
 			existingBooking.setBookingDetails(updatedBooking.getBookingDetails());
-
-			return bookingRepository.save(existingBooking);
+			
+	        Booking saved = bookingRepository.save(existingBooking);
+	        notificationService.notifyUpdateBooking(saved);
+			return saved;
 		}).orElseThrow(() -> new RuntimeException("Booking not found with id: " + id));
 	}
 
