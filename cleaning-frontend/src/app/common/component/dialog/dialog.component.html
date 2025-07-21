@@ -61,17 +61,11 @@
   <button class="btn btn-outline-secondary rounded-1 closeBtn border border-secondary mt-4" type="button" mat-button mat-dialog-close  (click)="closeDialog()">Close</button>
 </div>
 
-<div *ngIf="data.isConfirmDialog" class="container userDetails">
+<div class="container userDetails">
   <span *ngIf="data.isDelete">{{ "confirmDelete" | translate }} {{ data.selectdItem.id }}?</span>
   <span *ngIf="data.isEdit">{{ "confirmEdit" | translate }} {{ data.selectdItem.id }}?</span>
-  <div class="d-flex justify-content-evenly">
-    <button class="d-inline btn btn-outline-secondary rounded-1 closeBtn border border-secondary mt-4" type="button" mat-button mat-dialog-close>Cancel</button>
-    <button class="d-inline btn btn-outline-secondary rounded-1 closeBtn border border-secondary mt-4" type="button" mat-button mat-dialog-close  (click)="closeDialog()">Ok</button>
-  </div>
-</div>
-
-<div *ngIf="data.isLogoutDialog" class="container userDetails">
-  <span>{{ "confirmLogout" | translate }}</span>
+  <span *ngIf="data.isLogoutDialog">{{ "confirmLogout" | translate }}</span>
+  <span *ngIf="data.isCancelEdit">{{ "cancelEdit" | translate }}</span>
   <div class="d-flex justify-content-evenly">
     <button class="d-inline btn btn-outline-secondary rounded-1 closeBtn border border-secondary mt-4" type="button" mat-button mat-dialog-close>Cancel</button>
     <button class="d-inline btn btn-outline-secondary rounded-1 closeBtn border border-secondary mt-4" type="button" mat-button mat-dialog-close  (click)="closeDialog()">Ok</button>

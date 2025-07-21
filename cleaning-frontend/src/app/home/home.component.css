@@ -63,19 +63,19 @@
     background-color: red;
     margin-top: 10rem;
   }
-  
+
   .medium {
     width: 21rem;
     height: 21rem;
     background-color: orange;
   }
-  
+
   .small {
     width: 15rem;
     height: 15rem;
     background-color: white;
   }
-  
+
   .circle {
     border-radius: 50%;
     display: flex;
@@ -83,7 +83,7 @@
     justify-content: center;
     position: relative;
   }
-  
+
   /* same size as .big so the SVG overlays perfectly */
   .svg-text-big {
     position: absolute;
@@ -119,4 +119,8 @@
   }
   .error-message {
     color: red;
+  }
+
+  .isAllowdToClick {
+    cursor: not-allowed;
   }

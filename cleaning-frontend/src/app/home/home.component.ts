@@ -13,10 +13,10 @@ import { CommonService } from '../common/service/common/common.service';
 import { BubbleChartComponent } from './bubble-chart/bubble-chart.component';
 // import { ScrollingModule } from '@angular/cdk/scrolling';
 import { WebsocketService } from './service/websocket.service';
-
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, SearchComponent, MatButtonModule, BubbleChartComponent ], //ScrollingModule ],
+  imports: [CommonModule, SearchComponent, MatButtonModule, BubbleChartComponent, MatProgressSpinnerModule ], //ScrollingModule ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -87,15 +87,14 @@ export class HomeComponent implements OnInit {
   }
 
   getPageData(page: number, e?: any, searchTxt?: any): void {
-    this.currentPage = page;
     if (e) {
       e.preventDefault();
     }
-    // let start = (page - 1) * 10;
-    // let end = start + 10;
+    if (this.currentPage == page) {
+      return;
+    }
+    this.currentPage = page;
     this.getServiceData(this.currentPage, searchTxt);
-    // const newArr = this.allBookingData.slice(start, end);
-    // this.bookingData = structuredClone(newArr);
   }
 
   getSearch(e: any): void {

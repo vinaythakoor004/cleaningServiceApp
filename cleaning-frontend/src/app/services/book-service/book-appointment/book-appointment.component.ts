@@ -16,6 +16,7 @@ import { HomeService } from '../../../home/service/home.service';
 import { serviceDetails } from '../model/serviceDetails';
 import { bookingData } from '../../../home/model/bookingData';
 import { AlertService } from '../../../common/service/alert/alert.service';
+import { PopupService } from '../../../common/service/popup/popup.service';
 
 @Component({
   selector: 'app-book-appointment',
@@ -67,7 +68,7 @@ export class BookAppointmentComponent {
   );
   allBookingData: Array<bookingData> = [];
 
-  constructor(private fb: FormBuilder, private alertService: AlertService) {
+  constructor(private fb: FormBuilder, private alertService: AlertService, private popupService: PopupService) {
     this.appointmentForm = this.fb.group({
       selectedDate: ['', Validators.required],
       selectedSlot: ['', Validators.required],
@@ -220,10 +221,17 @@ export class BookAppointmentComponent {
   }
 
   backBtnClick(): void {
-    this.router.navigate(['services/book-service'], {
-      queryParams: { name: this.selectesService.name },
-    });
-    this.appointmentForm.reset();
+    const data = {
+      isCancelEdit: true
+    }
+    this.popupService.openDialog(data, '30rem', 'custom-dialog-container', () => {
+      this.homeService.isEdit = false;
+      this.homeService.editItem = {};
+      this.router.navigate(['services/book-service'], {
+        queryParams: { name: this.selectesService.name },
+      });
+      this.appointmentForm.reset();
+    })
   }
 
   setFormData(item: bookingData): void {

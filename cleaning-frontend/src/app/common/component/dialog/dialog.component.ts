@@ -16,12 +16,13 @@ export class DialogComponent {
   readonly dialogRef = inject(MatDialogRef<DialogComponent>);
 
   constructor() { }
-  
+
   ngOnInit(): void {
     console.log(this.data);
   }
 
   closeDialog(): void {
     this?.dialogRef?.close(true);
+    this.data = {};
   }
 }
