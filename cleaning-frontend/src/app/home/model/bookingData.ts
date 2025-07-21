@@ -1,6 +1,5 @@
 export class bookingData {
     id?: string
-    bookingId: number;
     firstName: string;
     lastName: string;
     email: string;
@@ -17,7 +16,6 @@ export class bookingData {
     }
 
     constructor(
-      bookingId: number,
       firstName: string,
       lastName: string,
       email: string,
@@ -34,7 +32,6 @@ export class bookingData {
       },
       id?: string
     ) {
-        this.bookingId = bookingId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

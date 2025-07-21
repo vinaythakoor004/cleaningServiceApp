@@ -1,0 +1,35 @@
+version: "3.9"
+
+services:
+  frontend:
+    build: ./cleaning-frontend
+    ports:
+      - "4200:4200"
+    depends_on:
+      - backend
+
+  backend:
+    build: ./cleaning-backend
+    ports:
+      - "8086:8086"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/bookingdb
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+    depends_on:
+      db:
+        condition: service_healthy # This ensures the DB is ready before the backend starts
+
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: bookingdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    healthcheck: # Add this healthcheck for the database service
+      test: ["CMD-SHELL", "pg_isready -U postgres -d bookingdb"]
+      interval: 10s
+      timeout: 5s
+      retries: 5

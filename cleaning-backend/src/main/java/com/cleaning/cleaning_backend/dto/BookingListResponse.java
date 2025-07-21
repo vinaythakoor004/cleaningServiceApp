@@ -1,8 +1,8 @@
-package com.cleaning.app.dto;
+package com.cleaning.cleaning_backend.dto;
 
 import java.util.List;
 
-import com.cleaning.app.entity.Booking;
+import com.cleaning.cleaning_backend.entity.Booking;
 
 public class BookingListResponse {
     private List<Booking> bookings;

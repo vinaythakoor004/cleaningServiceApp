@@ -1,4 +1,4 @@
-package com.cleaning.app.controller;
+package com.cleaning.cleaning_backend.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cleaning.app.dto.BookingListResponse;
-import com.cleaning.app.entity.Booking;
-import com.cleaning.app.service.BookingService;
+import com.cleaning.cleaning_backend.dto.BookingListResponse;
+import com.cleaning.cleaning_backend.entity.Booking;
+import com.cleaning.cleaning_backend.service.BookingService;
 
 @RestController
 @RequestMapping()
@@ -52,8 +52,8 @@ public class BookingController {
     }
 
     @DeleteMapping("/bookings/{id}")
-    public ResponseEntity<Void> deleteBooking(@PathVariable Long id) {
-        bookingService.deleteBooking(id);
+    public ResponseEntity<Void> deleteBooking(@PathVariable("id") Long Id) {
+        bookingService.deleteBooking(Id);
         return ResponseEntity.noContent().build(); // HTTP 204
     }
 }

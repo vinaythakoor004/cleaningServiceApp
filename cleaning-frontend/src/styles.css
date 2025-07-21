@@ -61,7 +61,7 @@
   background-color: #333;
   color: white;
   padding: 10px;
-  display: flex;    
+  display: flex;
   justify-content: flex-end;
 }
 
@@ -71,8 +71,8 @@
 }
 
 .paginationClass {
-  display: flex;    
-  justify-content: flex-end; 
+  display: flex;
+  justify-content: flex-end;
   margin-bottom: 15rem;
 }
 
@@ -107,3 +107,19 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.spinnerDiv {
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+  position: fixed; /* Positions relative to the viewport */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Use RGBA for the background color's transparency */
+  background-color: rgba(255, 255, 255, 0.6); /* White background, 60% opacity */
+  /* Or for a darker, more prominent overlay */
+  /* background-color: rgba(0, 0, 0, 0.4); */ /* Black background, 40% opacity */
+  z-index: 9999; /* Ensures it's on top of other content */
+}

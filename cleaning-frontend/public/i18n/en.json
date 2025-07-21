@@ -46,6 +46,7 @@
     "confirmLogout": "Are you sure you want to logout?",
     "confirmDelete": "Are you sure you want to delete row:",
     "confirmEdit": "Are you sure you want to edit row:",
+    "cancelEdit": "Are you sure you want to cancel edit booking?",
     "checkout": "Checkout",
     "user": "User",
     "payment": "Payment",

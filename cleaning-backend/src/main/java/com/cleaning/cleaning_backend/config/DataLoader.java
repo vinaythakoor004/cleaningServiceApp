@@ -1,7 +1,7 @@
-package com.cleaning.app.config;
+package com.cleaning.cleaning_backend.config;
 
-import com.cleaning.app.entity.Booking;
-import com.cleaning.app.repository.BookingRepository;
+import com.cleaning.cleaning_backend.entity.Booking;
+import com.cleaning.cleaning_backend.repository.BookingRepository;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.boot.CommandLineRunner;

@@ -1,13 +1,13 @@
-package com.cleaning.app;
+package com.cleaning.cleaning_backend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CleaningAppApplication {
+public class CleaningBackendApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CleaningAppApplication.class, args);
+		SpringApplication.run(CleaningBackendApplication.class, args);
 	}
 
 }

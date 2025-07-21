@@ -4,6 +4,7 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { BookService } from './book-service/service/book.service';
 import { serviceDetails } from './book-service/model/serviceDetails';
 import { TranslatePipe } from '@ngx-translate/core';
+import { HomeService } from '../home/service/home.service';
 
 @Component({
   selector: 'app-services',
@@ -14,8 +15,10 @@ import { TranslatePipe } from '@ngx-translate/core';
 export class ServicesComponent {
   services: Array<serviceDetails> = []
 
-  constructor(private route: ActivatedRoute, private bookService: BookService, private router: Router ) {}
+  constructor(private route: ActivatedRoute, private bookService: BookService, private router: Router, private homeService: HomeService) {}
   ngOnInit(): void {
+    this.homeService.isEdit = false;
+    this.homeService.editItem = {};
     this.bookService.getServiceDetails().subscribe({
       next: (data) => {
         this.services = data;
@@ -27,7 +30,7 @@ export class ServicesComponent {
     }
     );
   }
-  
+
   checkService(service: serviceDetails): void {
     const url = this.router.url + '/book-service';
     const params = {

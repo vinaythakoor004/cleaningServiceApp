@@ -1,4 +1,4 @@
-package com.cleaning.app.entity;
+package com.cleaning.cleaning_backend.entity;
 
 import java.time.LocalDateTime;
 
