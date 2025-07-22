@@ -14,7 +14,7 @@
         <!-- <a #about class="nav-link" routerLink="ex" [routerLinkActive]="['activeClass']"
             (click)="navigatePage($event, 'ex')">ex</a> -->
 
-        <a ></a>
+        <!-- <a ></a> -->
       <button class="nav-link" [matBadge]="notifications.length || 0" matBadgeColor="warn"  [routerLinkActive]="['activeClass']" popovertarget="mydiv"><mat-icon class="img-responsive aboutImg" popovertarget="mydiv">account_circle</mat-icon></button>
         <a #about *ngIf="!isLoggedIn()" class="nav-link" routerLink="login" [routerLinkActive]="['activeClass']"
             (click)="navigatePage($event, 'login')">Log In</a>
@@ -23,7 +23,7 @@
         <router-outlet />
     </main>
 
-    <!-- <footer #navbar class="bd-footer footer nav navbarClass bg-dark p-0">
+    <footer #navbar class="bd-footer footer nav navbarClass bg-dark p-0">
         <div class="row w-100 m-auto mt-3 footerClass">
             <div class="col-3">
                 <span class="openSansRegular fs-4">The cleanic</span>
@@ -51,7 +51,7 @@
             </div>
         </div>
         <span class="m-auto mt-3 mb-3">&copy; {{ "footerText" | translate}}</span>
-    </footer> -->
+    </footer>
 </div>
 
 <div popover id="mydiv" class="border border-dark">

@@ -4,14 +4,14 @@ import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/rou
 import { CommonService } from './common/service/common/common.service';
 import { PopupService } from './common/service/popup/popup.service';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { MatBadgeModule} from '@angular/material/badge';
 import { MatIconModule } from '@angular/material/icon';
 import { WebsocketService } from './home/service/websocket.service';
 
 @Component({
   selector: 'app-root',
-  imports: [ CommonModule, RouterLink, RouterOutlet, RouterLinkActive, MatTooltipModule, MatBadgeModule, MatIconModule ],
+  imports: [ CommonModule, RouterLink, RouterOutlet, RouterLinkActive, MatTooltipModule, MatBadgeModule, MatIconModule, TranslatePipe ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
